@@ -1,0 +1,24 @@
+# MacOS
+.DS_Store
+.Trash/
+
+# VS Code
+.vscode/
+
+# Codeium
+.codeium/
+
+# Node / Python / други непотребни
+node_modules/
+*.sqlite
+*.log# Ignore system files
+.DS_Store
+.Trash/
+*.log
+*.sqlite
+.zsh_sessions/
+.zsh_history
+
+# Ignore VS Code / IDE files
+.vscode/
+.codeium/
