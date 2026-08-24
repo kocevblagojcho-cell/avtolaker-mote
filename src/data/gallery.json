@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "title": "Каросерија пред/после",
+    "before": "/images/car-paint-01-before.jpg",
+    "after": "/images/car-paint-01-after.jpg"
+  },
+  {
+    "id": "2",
+    "title": "Целосно фарбање",
+    "before": "/images/car-paint-02-before.jpg",
+    "after": "/images/car-paint-02-after.jpg"
+  },
+  {
+    "id": "3",
+    "title": "Реконструкција на панел",
+    "before": "/images/car-paint-03-before.jpg",
+    "after": "/images/car-paint-03-after.jpg"
+  },
+  {
+    "id": "4",
+    "title": "Цврсто полирање",
+    "before": "/images/car-polishing-before.jpg",
+    "after": "/images/car-polishing-after.jpg"
+  },
+  {
+    "id": "5",
+    "title": "Лесни поправки",
+    "before": "/images/car-paint-05-before.jpg",
+    "after": "/images/car-paint-after-5.jpg"
+  },
+  {
+    "id": "6",
+    "title": "Крајна завршница",
+    "before": "/images/car-paint-06-before.jpg",
+    "after": "/images/car-paint-after-06.jpg"
+  }
+]

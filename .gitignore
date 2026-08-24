@@ -22,3 +22,7 @@ node_modules/
 # Ignore VS Code / IDE files
 .vscode/
 .codeium/
+
+# Vite
+dist/
+.vite/

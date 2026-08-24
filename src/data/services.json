@@ -1,0 +1,50 @@
+[
+  {
+    "id": "celostno-farbanje",
+    "emoji": "🎨",
+    "title": "Целосно Фарбање",
+    "description": "целото возило",
+    "price": "По Договор",
+    "durationSlots": 3
+  },
+  {
+    "id": "delumno-farbanje",
+    "emoji": "🖌️",
+    "title": "Делумно Фарбање",
+    "description": "одделни панели",
+    "price": "По Договор",
+    "durationSlots": 2
+  },
+  {
+    "id": "izvlekuvanje",
+    "emoji": "⚡",
+    "title": "Извлекување со Каролинер",
+    "description": "специјална техника без замена",
+    "price": "По Договор",
+    "durationSlots": 2
+  },
+  {
+    "id": "poliranje",
+    "emoji": "✨",
+    "title": "Полирање",
+    "description": "машинско полирање за блесок",
+    "price": "По Договор",
+    "durationSlots": 1
+  },
+  {
+    "id": "nabavka-delovi",
+    "emoji": "🔧",
+    "title": "Набавка на Делови",
+    "description": "браник, врата, панели",
+    "price": "По Договор",
+    "durationSlots": 1
+  },
+  {
+    "id": "termo-lakiranje",
+    "emoji": "🌡️",
+    "title": "Термо Лакирање",
+    "description": "премиум заштита на лакот",
+    "price": "По Договор",
+    "durationSlots": 2
+  }
+]

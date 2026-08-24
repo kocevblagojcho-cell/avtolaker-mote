@@ -1,210 +1,233 @@
-# 🚗 AutoLaker Mote - Automotive Repair & Body Shop
+# 🚗 Авто Лакер Моте — автолакерски услуги и закажување термини
 
-A modern, responsive web application for an automotive repair and body shop service. Professional online presence for presenting car repair, maintenance, and customization services.
-
----
-
-## 📋 About the Project
-
-**AutoLaker Mote** is a professional web application created for an automotive service and body shop. The application presents the garage and its services in a modern, user-friendly, and professional manner.
-
-**Main Services Offered:**
-- 🔧 Car repairs and diagnostics
-- 🛠️ Parts repair and replacement
-- 🎨 Professional car painting
-- 🚘 Bodywork and damage repair
-- 🔩 General vehicle maintenance and servicing
-- 📞 Customer contact and service inquiries
+React SPA за автолакерска работилница, со онлајн закажување на термини по датум и час.
+Изградена со Vite, React Router и чист CSS.
 
 ---
 
-## ✨ Key Features
+## 📋 За проектот
 
-### 🏠 Home Page
-Professional homepage presenting the AutoLaker Mote garage with an overview of main services and a compelling call-to-action.
+**Авто Лакер Моте** (Кочани) е веб апликација за автолакерска работилница. Ги прикажува услугите,
+галерија со работа пред/после, и овозможува клиентот да закаже **конкретен датум и час**.
 
-### 🔧 Car Repair
-Detailed information about vehicle repair, diagnostics, and maintenance services with expert explanations.
+Целата содржина (услуги, галерија, контакт, работно време) е во JSON фајлови, па се менува
+без пипање во React кодот.
 
-### 🛠️ Parts & Replacement
-Information about repairing damaged vehicle components and replacing defective or worn parts professionally.
+**Услуги:**
 
-### 🎨 Car Painting
-Professional vehicle painting and body paint services with high-quality finish options.
-
-### 🚘 Bodywork Services
-Expert repair of scratches, dents, and other exterior vehicle damage with precision workmanship.
-
-### 📞 Contact & Inquiries
-Easy-to-use contact section where customers can find garage information and request service quotes.
+- 🎨 Целосно фарбање
+- 🖌️ Делумно фарбање
+- ⚡ Извлекување со каролинер
+- ✨ Полирање
+- 🔧 Набавка на делови
+- 🌡️ Термо лакирање
 
 ---
 
-## 🎯 Project Goals
+## ✨ Функционалности
 
-- ✅ Create a modern and professional automotive service website
-- ✅ Present services clearly and comprehensively
-- ✅ Make information easily accessible to customers
-- ✅ Provide responsive and excellent user experience
-- ✅ Build strong online presence for AutoLaker Mote
-- ✅ Enable customer inquiries and bookings
+### 📅 Закажување со часови
 
----
+Најважниот дел. Клиентот избира услуга, датум и **точен час**:
 
-## 💻 Technologies
+- часовите се генерираат од работното време во `src/data/business.json`
+- **неделата и секој затворен ден се одбиваат** со јасна порака
+- **зафатените часови се прецртани и оневозможени** — нема двојно закажување
+- **изминатите часови се оневозможени** кога се закажува за денес
+- подолгите услуги зафаќаат **повеќе последователни часа** (целосно фарбање = 3 ч), и часот се
+  нуди само ако целата услуга се вклопува до затворање
+- се закажува најмногу 60 дена однапред
+- валидација по поле, со пораки на македонски
 
-The project is built using modern web technologies:
+### 🗂️ Преглед на термини
 
-| Technology | Purpose |
-|-----------|---------|
-| **React** | Frontend framework and components |
-| **JavaScript** | Interactivity and functionality |
-| **HTML5** | Semantic markup structure |
-| **CSS3** | Styling and animations |
-| **Bootstrap** | Responsive grid and components |
-| **Vite** | Fast build tool and dev server |
+Термините се поделени на **претстојни** и **изминати**, со име, телефон (клик за повик), возило,
+услуга, датум и временски интервал. Пред откажување се бара потврда.
 
----
+### 🔧 Услуги и галерија
 
-## 📱 Responsive Design
+Услугите се читаат од JSON. Клик на „Закажи" води на `/zakazi?usluga=poliranje`, па линкот може
+да се сподели. Секоја галериска картичка се префрла помеѓу сликата „пред" и „после".
 
-The application is fully optimized for all devices:
+### 📞 Контакт
 
-- 💻 **Desktop** - Full-featured experience with optimized layout
-- 📱 **Mobile** - Touch-friendly interface with vertical layout
-- 📲 **Tablet** - Medium screen optimization
+Телефон, WhatsApp (со фиксно копче), работно време, адреса и Google мапа.
 
-The layout automatically adapts to different screen sizes for an optimal user experience on any device.
+### 💾 Чување на податоци
+
+Термините се чуваат во `localStorage` преку `BookingsContext`, синхронизирано меѓу отворени табови.
 
 ---
 
-## 🗂️ Project Structure
+## 💻 Технологии
+
+| Технологија | За што |
+|---|---|
+| **React 18** | Функциски компоненти и hooks |
+| **Vite** | Dev сервер со hot reload и production build |
+| **React Router v7** | Рути, `Layout` со `Outlet`, query параметри |
+| **Context API** | `BookingsContext` за термините |
+| **Чист CSS** | Еден `styles.css` со токени во `:root`, Flexbox и Grid |
+| **JSON** | Содржина: услуги, галерија, контакт, работно време |
+| **localStorage** | Термините се паметат по освежување |
+
+Без CSS framework и без надворешни UI библиотеки.
+
+---
+
+## 🗂️ Структура
 
 ```
 avtolaker-mote/
 ├── public/
-│   └── assets/           # Images and media files
+│   ├── images/                   # Лого и слики пред/после
+│   └── _redirects                # SPA fallback за статичен хостинг
 ├── src/
-│   ├── components/       # Reusable React components
-│   ├── pages/           # Page components (Home, Services, Contact, etc.)
-│   ├── assets/          # Images, icons, logos
-│   ├── styles/          # CSS stylesheets
-│   ├── App.jsx          # Main app component
-│   └── main.jsx         # Entry point
-├── index.html           # HTML template
-├── package.json         # Project dependencies
-├── vite.config.js       # Vite configuration
-└── README.md           # Project documentation
+│   ├── main.jsx                  # ReactDOM root
+│   ├── App.jsx                   # Provider + BrowserRouter + рути
+│   ├── styles.css                # Целиот CSS: токени, класи, media queries
+│   ├── components/
+│   │   ├── Layout.jsx            # Header + Outlet + Footer + WhatsApp
+│   │   ├── Header.jsx            # Лого, име, телефон, навигација
+│   │   ├── Footer.jsx            # Контакт и мапа
+│   │   ├── Home.jsx              # Најава + услуги + галерија
+│   │   ├── ServiceCard.jsx
+│   │   ├── GalleryItem.jsx       # Префрлање пред/после
+│   │   ├── BookingForm.jsx       # Формата за закажување
+│   │   ├── SlotPicker.jsx        # Мрежа со часовите
+│   │   ├── Appointments.jsx      # Претстојни / изминати
+│   │   ├── AppointmentCard.jsx   # Еден термин + откажување
+│   │   └── ParticlesBackground.jsx
+│   ├── context/
+│   │   └── BookingsContext.jsx   # Термини + localStorage
+│   ├── data/
+│   │   ├── business.json         # Контакт, работно време, слотови
+│   │   ├── services.json         # Услуги + траење
+│   │   └── gallery.json          # Слики пред/после
+│   └── utils/
+│       ├── slots.js              # Пресметка на слободни часови
+│       └── validation.js         # Валидација на формата
+├── index.html
+├── vite.config.js
+└── package.json
 ```
+
+Логиката за часови е во `utils/slots.js` како чисти функции — компонентите само прикажуваат.
 
 ---
 
-## 🚀 Installation & Setup
+## 🚀 Инсталација
 
-### Prerequisites
-- **Node.js** (v14 or higher)
-- **npm** or **yarn**
+Потребно: **Node.js** v18 или повисок и **npm**.
 
-### Installation Steps
-
-1. **Clone the repository:**
 ```bash
 git clone https://github.com/kocevblagojcho-cell/avtolaker-mote.git
-```
-
-2. **Navigate to project directory:**
-```bash
 cd avtolaker-mote
-```
-
-3. **Install dependencies:**
-```bash
 npm install
-```
-
-4. **Start the development server:**
-```bash
 npm run dev
 ```
 
-The application will be available at the URL provided by Vite (typically `http://localhost:5173`).
+Апликацијата се отвора на `http://localhost:5173`.
 
 ---
 
-## 🛠️ Development Commands
+## 🛠️ Команди
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Create production build |
-| `npm run preview` | Preview production build locally |
+| Команда | Што прави |
+|---|---|
+| `npm run dev` | Dev сервер со hot reload |
+| `npm run build` | Production build во `dist/` |
+| `npm run preview` | Локален приказ на build-от |
 
----
+`dist/` е статичен — се качува на Netlify, Vercel или GitHub Pages.
 
-## 🎨 Services Overview
-
-| Service | Description | Target |
-|---------|-------------|--------|
-| 🔧 **Car Repair** | Diagnosis, repair and maintenance | Vehicle owners |
-| 🛠️ **Parts & Replacement** | OEM and aftermarket part installation | All customers |
-| 🎨 **Painting** | Professional car painting and repair | Customization clients |
-| 🚘 **Bodywork** | Dent, scratch, and damage repair | Accident damage |
-| 🔩 **Maintenance** | Regular servicing and maintenance | Fleet and individual |
+**Важно за хостинг:** `BrowserRouter` бара серверот секоја рута да ја врати на `index.html`.
+За Netlify тоа е покриено со `public/_redirects`. За Vercel додај `vercel.json` со rewrite,
+за Apache — `.htaccess`. Без тоа, `/zakazi` отворено директно дава 404.
 
 ---
 
-## 📌 Future Enhancements
+## ⚙️ Менување на содржината
 
-Planned improvements for future versions:
+Сè што сопственикот би сакал да смени е во `src/data/`.
 
-- 📅 Online appointment booking system
-- 👤 Customer registration and accounts
-- 📝 Service request forms
-- ⏰ Real-time appointment management
-- 🖼️ Photo gallery of completed work
-- ⭐ Customer reviews and ratings
-- 💰 Automated price estimation
-- 🔐 Secure admin dashboard
-- 🗄️ Database integration
-- 📧 Email notifications
+### Работно време — `business.json`
+
+```json
+"schedule": {
+  "slotMinutes": 60,
+  "maxDaysAhead": 60,
+  "hoursText": "Пон-Саб 08:00-18:00, Недела затворено",
+  "hours": {
+    "0": null,
+    "1": { "open": "08:00", "close": "18:00" }
+  }
+}
+```
+
+Клучевите се денови по `getDay()`: `0` = недела … `6` = сабота. `null` значи затворено тој ден.
+`slotMinutes: 30` дава получасовни термини. `hoursText` е текстот што го гледа клиентот —
+треба да се смени заедно со `hours`.
+
+### Услуги — `services.json`
+
+```json
+{
+  "id": "poliranje",
+  "emoji": "✨",
+  "title": "Полирање",
+  "description": "машинско полирање за блесок",
+  "price": "По Договор",
+  "durationSlots": 1
+}
+```
+
+`durationSlots: 3` со `slotMinutes: 60` значи услугата трае 3 часа и блокира три последователни
+термина.
+
+### Галерија — `gallery.json`
+
+Нов запис со `before` и `after` што покажуваат на фајлови во `public/images/`.
 
 ---
 
-## 🌐 Browser Compatibility
+## 📱 Responsive
 
-- ✅ Chrome (latest)
-- ✅ Firefox (latest)
-- ✅ Safari (latest)
-- ✅ Edge (latest)
+- 📱 **Телефон** — сè во една колона, навигацијата во еден ред, 3 часа по ред
+- 📲 **Таблет** — формата во две колони
+- 💻 **Десктоп** — услугите во мрежа, заглавието во еден ред
 
----
-
-## 📄 License
-
-This project is open source and available for modification and distribution.
+Mobile-first CSS со две media queries (`640px` и `768px`).
 
 ---
 
-## 👨‍💻 Author
+## 📌 Следни чекори
 
-**Blagojcho Kocev**
+- 🔐 Админ панел со најава
+- 🗄️ Backend и база, за да термините се гледаат од сите уреди
+- 📧 Потврда и потсетник преку e-mail или SMS
+- 👤 Профили на клиенти со историја
+- ⭐ Оценки и коментари
+- 🌍 Повеќејазичност (МК / EN / DE)
+
+---
+
+## ⚠️ Познато ограничување
+
+Термините се чуваат локално во прелистувачот на клиентот. Значи закажувањата **не стигнуваат до
+работилницата** — за тоа е потребен backend или испраќање на WhatsApp/e-mail.
+
+---
+
+## 👨‍💻 Автор
+
+**Благојчо Коцев**
 
 - 🔗 GitHub: [@kocevblagojcho-cell](https://github.com/kocevblagojcho-cell)
-- 📧 Email: kocevblagojcho@gmail.com
-- 💼 Portfolio: [kocevportfolio](https://github.com/kocevblagojcho-cell/kocevportfolio)
+- 📧 Е-пошта: kocevblagojcho@gmail.com
+- 💼 Портфолио: [kocevportfolio](https://github.com/kocevblagojcho-cell/kocevportfolio)
 
 ---
 
-## 🙏 Special Thanks
-
-**AutoLaker Mote** - Professional automotive service and body shop
-
----
-
-**Last Updated**: August 24, 2026  
-**Version**: 1.0.0  
-**Status**: ✅ Production Ready
-
----
-
-💡 *"Quality repairs at professional standards."* 💡
+**Последна измена**: 25 август 2026
+**Верзија**: 2.0.0
